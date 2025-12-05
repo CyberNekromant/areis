@@ -1,0 +1,22 @@
+USE master;
+GO
+
+IF DB_ID('CoffeeGo') IS NOT NULL
+BEGIN
+    ALTER DATABASE CoffeeGo SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    DROP DATABASE CoffeeGo;
+END
+GO
+
+CREATE DATABASE CoffeeGo;
+GO
+
+ALTER DATABASE CoffeeGo SET READ_COMMITTED_SNAPSHOT ON;
+GO
+
+USE CoffeeGo;
+GO
+
+-- Проверка: база создана?
+SELECT 'База CoffeeGo создана и активна' AS [Status];
+GO
